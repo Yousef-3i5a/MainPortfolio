@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yousef Eisa | Frontend Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    <!-- استخدام خط Inter الرسمي والاحترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -19,7 +19,6 @@
             --text: #e8e8f0;
             --muted: #6b6b80;
             --border: #222232;
-            --glow: rgba(200, 240, 69, 0.15);
         }
 
         * {
@@ -35,7 +34,8 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'DM Sans', sans-serif;
+            /* تطبيق الخط الجديد على كل الصفحة */
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             overflow-x: hidden;
         }
@@ -50,6 +50,7 @@
             z-index: 0;
         }
 
+        /* ----- Navbar Styles ----- */
         nav {
             position: fixed;
             top: 0;
@@ -66,7 +67,6 @@
         }
 
         .nav-logo {
-            font-family: 'Syne', sans-serif;
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--accent);
@@ -83,7 +83,7 @@
             color: var(--muted);
             text-decoration: none;
             font-size: 0.9rem;
-            letter-spacing: 0.05em;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
@@ -91,6 +91,23 @@
             color: var(--accent);
         }
 
+        /* زرار الموبايل (Hamburger Menu) */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .mobile-menu-btn span {
+            width: 30px;
+            height: 2px;
+            background-color: var(--text);
+            transition: 0.3s ease;
+        }
+
+        /* ----- Hero Section ----- */
         #hero {
             min-height: 100vh;
             display: grid;
@@ -113,17 +130,6 @@
             pointer-events: none;
         }
 
-        .hero-blob2 {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(123, 94, 167, 0.1) 0%, transparent 70%);
-            left: -50px;
-            bottom: 50px;
-            pointer-events: none;
-        }
-
         .badge {
             display: inline-flex;
             align-items: center;
@@ -134,7 +140,7 @@
             padding: 6px 16px;
             border-radius: 100px;
             font-size: 0.8rem;
-            letter-spacing: 0.1em;
+            font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 28px;
             width: fit-content;
@@ -165,11 +171,10 @@
         }
 
         h1.hero-title {
-            font-family: 'Syne', sans-serif;
             font-size: clamp(3rem, 6vw, 5.5rem);
             font-weight: 800;
-            line-height: 1.0;
-            letter-spacing: -3px;
+            line-height: 1.1;
+            letter-spacing: -2px;
             margin-bottom: 24px;
             animation: fadeUp 0.8s 0.1s ease both;
         }
@@ -199,10 +204,13 @@
             color: #0a0a0f;
             padding: 14px 32px;
             border-radius: 8px;
+            border: none;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            font-family: inherit;
         }
 
         .btn-primary:hover {
@@ -216,6 +224,7 @@
             padding: 14px 32px;
             border-radius: 8px;
             text-decoration: none;
+            font-weight: 500;
             font-size: 0.95rem;
             transition: border-color 0.2s, background 0.2s;
         }
@@ -253,13 +262,6 @@
             position: relative;
         }
 
-        .avatar-frame::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(200, 240, 69, 0.05), transparent 60%);
-        }
-
         .avatar-tag {
             position: absolute;
             bottom: -16px;
@@ -274,10 +276,6 @@
             white-space: nowrap;
         }
 
-        .avatar-tag strong {
-            color: var(--accent);
-        }
-
         .stat-chip {
             position: absolute;
             background: var(--card);
@@ -288,10 +286,10 @@
         }
 
         .stat-chip strong {
-            font-family: 'Syne', sans-serif;
             font-size: 1.4rem;
             color: var(--accent);
             display: block;
+            font-weight: 800;
         }
 
         .stat-chip:nth-child(1) {
@@ -338,10 +336,9 @@
         }
 
         .section-title {
-            font-family: 'Syne', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             margin-bottom: 16px;
         }
 
@@ -352,6 +349,7 @@
             margin-bottom: 60px;
         }
 
+        /* ----- About Section ----- */
         #about {
             background: var(--surface);
         }
@@ -393,10 +391,6 @@
             min-width: 80px;
         }
 
-        .info-list li span:last-child {
-            color: var(--text);
-        }
-
         .langs-row {
             display: flex;
             gap: 12px;
@@ -416,183 +410,6 @@
             color: var(--accent);
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .skill-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-
-        .skill-card-icon {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
-
-        .skill-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: rgba(200, 240, 69, 0.07);
-            border: 1px solid rgba(200, 240, 69, 0.15);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.78rem;
-        }
-
-        .skill-tag.purple {
-            background: rgba(123, 94, 167, 0.1);
-            border-color: rgba(123, 94, 167, 0.25);
-            color: #b09fd0;
-        }
-
-        .skill-tag.gray {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--border);
-            color: var(--muted);
-        }
-
-        #projects {
-            background: var(--surface);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .project-card:hover {
-            border-color: rgba(200, 240, 69, 0.3);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .project-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: rgba(200, 240, 69, 0.08);
-            line-height: 1;
-            margin-bottom: 16px;
-        }
-
-        .project-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .project-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .project-tech span {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--muted);
-            padding: 3px 10px;
-            border-radius: 100px;
-            font-size: 0.75rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .proj-link {
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 8px 18px;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
-
-        .proj-link.primary {
-            background: var(--accent);
-            color: #0a0a0f;
-            font-weight: 600;
-        }
-
-        .proj-link.ghost {
-            border: 1px solid var(--border);
-            color: var(--muted);
-        }
-
-        .proj-link:hover {
-            opacity: 0.85;
-        }
-
         .edu-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -610,7 +427,6 @@
         }
 
         .edu-info h3 {
-            font-family: 'Syne', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 6px;
@@ -635,10 +451,159 @@
             background: rgba(200, 240, 69, 0.08);
             border: 1px solid rgba(200, 240, 69, 0.2);
             color: var(--accent);
+            font-weight: 500;
         }
 
-        #contact {
+        /* ----- Skills Section ----- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .skill-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(200, 240, 69, 0.07);
+            border: 1px solid rgba(200, 240, 69, 0.15);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ----- Projects Section ----- */
+        #projects {
             background: var(--surface);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            border-color: rgba(200, 240, 69, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .project-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(200, 240, 69, 0.08);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .project-tech span {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .proj-link {
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+        .proj-link.primary {
+            background: var(--accent);
+            color: #0a0a0f;
+        }
+
+        .proj-link.ghost {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .proj-link:hover {
+            opacity: 0.85;
+        }
+
+        /* ----- Contact Section & Form ----- */
+        #contact {
             text-align: center;
         }
 
@@ -647,23 +612,52 @@
             margin: 0 auto;
         }
 
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Syne', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 4px;
-            margin: 32px 0;
-            transition: color 0.2s;
+        /* تنسيق الفورم الجديدة */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 40px auto 30px;
+            text-align: left;
         }
 
-        .contact-email:hover {
-            color: var(--accent);
+        .input-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--muted);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(200, 240, 69, 0.1);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         .socials {
@@ -671,6 +665,7 @@
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .social-btn {
@@ -683,6 +678,7 @@
             color: var(--muted);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: 0.2s;
         }
 
@@ -695,17 +691,57 @@
             padding: 24px 60px;
             text-align: center;
             color: var(--muted);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             border-top: 1px solid var(--border);
         }
 
+        /* ----- Responsive / Mobile Styles ----- */
         @media (max-width:900px) {
             nav {
                 padding: 16px 24px;
             }
 
+            /* تفعيل زرار الموبايل */
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            /* تنسيق القائمة الجانبية للموبايل */
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                /* مخفية برة الشاشة */
+                width: 100%;
+                height: 100vh;
+                background: var(--surface);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* الكلاس ده هيتضاف بالجافاسكريبت لما نضغط على الزرار */
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            /* حركة الزرار (X) */
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
             }
 
             #hero {
@@ -721,14 +757,8 @@
                 padding: 80px 24px;
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .about-grid,
+            .skills-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -745,6 +775,10 @@
             footer {
                 padding: 24px;
             }
+
+            .input-group {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -753,7 +787,13 @@
 
     <nav>
         <div class="nav-logo">Y.Eisa</div>
-        <ul class="nav-links">
+        <!-- أيقونة الموبايل -->
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -763,7 +803,6 @@
 
     <section id="hero">
         <div class="hero-blob"></div>
-        <div class="hero-blob2"></div>
         <div class="hero-content">
             <div class="badge">Available for work</div>
             <h1 class="hero-title">Yousef<br><span>Eisa</span></h1>
@@ -774,19 +813,23 @@
             <div class="hero-ctas">
                 <a href="#projects" class="btn-primary">View My Work</a>
                 <a href="#contact" class="btn-ghost">Get In Touch</a>
+
+                <a href="Helpers/cv/Yousef_Eisa.pdf" target="_blank" class="btn-ghost"
+                    style="border-color: var(--accent); color: var(--accent);">
+                    📄 View CV
+                </a>
             </div>
         </div>
         <div class="hero-visual">
             <div class="avatar-wrap">
-                <div class="stat-chip">
-                    <strong>5+</strong>
-                    Projects Built
+                <div class="stat-chip" style="z-index: 1000;"><strong>5+</strong> Projects Built</div>
+
+                <div class="avatar-frame" style="padding: 0; background: none;">
+                    <img src="Helpers/images/WhatsApp Image 2026-05-07 at 9.46.14 PM.jpeg" alt="Yousef Eisa"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
                 </div>
-                <div class="avatar-frame">👨‍💻</div>
-                <div class="stat-chip">
-                    <strong>React</strong>
-                    Currently learning
-                </div>
+
+                <div class="stat-chip"><strong>React</strong> Currently learning</div>
                 <div class="avatar-tag">📍 <strong>Mit Ghamr</strong>, Dakahlia, Egypt</div>
             </div>
         </div>
@@ -804,7 +847,8 @@
                     clean, maintainable code.</p>
                 <p>I've worked with modern frontend tools and currently expanding my expertise with
                     <strong>React.js</strong>. My graduation project gave me a unique background in <strong>GIS and
-                        database concepts</strong> that sets me apart.</p>
+                        database concepts</strong> that sets me apart.
+                </p>
                 <ul class="info-list">
                     <li><span>📧 Email</span><span>eisayousef07@gmail.com</span></li>
                     <li><span>📞 Phone</span><span>+20 1094921997</span></li>
@@ -827,10 +871,6 @@
                             <div class="edu-badge">Grad Project: Excellent ⭐</div>
                             <div class="edu-badge">Route Front-End Course</div>
                         </div>
-                        <p style="color:var(--muted);font-size:0.85rem;margin-top:14px;line-height:1.6;">
-                            Graduation Project: <strong style="color:var(--text)">Web-Based GIS Application</strong> —
-                            earned an Excellent grade, combining spatial data and modern web technologies.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -846,10 +886,8 @@
                 <div class="skill-card-icon">🌐</div>
                 <h3>Frontend</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span><span class="skill-tag">React.js</span>
                     <span class="skill-tag">Bootstrap</span>
                 </div>
             </div>
@@ -857,26 +895,20 @@
                 <div class="skill-card-icon">🛠️</div>
                 <h3>Tools & Version Control</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag gray">Git</span>
-                    <span class="skill-tag gray">GitHub</span>
-                    <span class="skill-tag gray">VS Code</span>
-                    <span class="skill-tag gray">Figma</span>
-                    <span class="skill-tag gray">MySQL</span>
-                    <span class="skill-tag gray">ArcGIS</span>
+                    <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">VS Code</span><span class="skill-tag">Figma</span>
                 </div>
             </div>
             <div class="skill-card">
                 <div class="skill-card-icon">🧠</div>
                 <h3>Soft Skills</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag purple">Problem Solving</span>
-                    <span class="skill-tag purple">Teamwork</span>
-                    <span class="skill-tag purple">Fast Learner</span>
+                    <span class="skill-tag">Problem Solving</span><span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Fast Learner</span>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="projects">
         <div class="section-label">My Work</div>
         <h2 class="section-title">Featured Projects</h2>
@@ -887,76 +919,87 @@
             <div class="project-card featured">
                 <div>
                     <div class="project-num">01</div>
-                    <h3>Developer Portfolio Website</h3>
-                    <p>Designed and developed a personal portfolio website to showcase my projects and skills. Fully
-                        responsive across all screen sizes using CSS Flexbox, Grid, and Media Queries.</p>
+                    <h3>Product Management System (CRUD)</h3>
+                    <p>A complete single-page application for managing products. Allows users to Create, Read, Update,
+                        and Delete products, with data validation and search functionality. Uses local storage to save
+                        data without a database.</p>
                     <div class="project-tech">
-                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Flexbox</span><span>Grid</span>
+                        <span>JavaScript</span><span>DOM</span><span>Local Storage</span><span>HTML/CSS</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="proj-link primary">Live Demo</a>
-                        <a href="#" class="proj-link ghost">GitHub</a>
+                        <a href="https://yousef-3i5a.github.io/CrudSystemProject/" target="_blank"
+                            class="proj-link primary">Live Demo</a>
+                        <a href="https://github.com/Yousef-3i5a/CrudSystemProject" target="_blank"
+                            class="proj-link ghost">GitHub</a>
                     </div>
                 </div>
                 <div
                     style="background:var(--surface);border-radius:12px;height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid var(--border);">
-                    🖥️</div>
+                    📦
+                </div>
             </div>
 
             <div class="project-card">
                 <div class="project-num">02</div>
-                <h3>Product Management System</h3>
-                <p>A complete single-page CRUD application for managing product data. Uses localStorage with JSON
-                    serialization to persist data client-side without a backend.</p>
+                <h3>Adidas E-Commerce Concept</h3>
+                <p>A modern, fully responsive landing page for Adidas. Features interactive UI elements, smooth hover
+                    effects, and a clean layout designed to showcase products attractively.</p>
                 <div class="project-tech">
-                    <span>JavaScript</span><span>HTML</span><span>CSS</span><span>localStorage</span>
+                    <span>HTML5</span><span>CSS3</span><span>Responsive Design</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="proj-link primary">Live Demo</a>
-                    <a href="#" class="proj-link ghost">GitHub</a>
+                    <a href="https://yousef-3i5a.github.io/addidasproject/" target="_blank"
+                        class="proj-link primary">Live Demo</a>
+                    <a href="https://github.com/Yousef-3i5a/addidasproject" target="_blank"
+                        class="proj-link ghost">GitHub</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-num">03</div>
-                <h3>Web-Based GIS Application</h3>
-                <p>Graduation project — a full web GIS application integrating spatial data with modern web tech. Earned
-                    an <strong style="color:var(--accent)">Excellent</strong> grade and combines geography, databases,
-                    and frontend dev.</p>
+                <h3>Bakery Website Template</h3>
+                <p>A beautifully designed, multi-section website for a bakery business. Includes an appealing hero
+                    section, product gallery, and contact details with smooth scrolling and animations.</p>
                 <div class="project-tech">
-                    <span>ArcGIS</span><span>JavaScript</span><span>MySQL</span><span>HTML/CSS</span>
+                    <span>HTML</span><span>CSS</span><span>Flexbox</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="proj-link primary">View Project</a>
-                    <a href="#" class="proj-link ghost">GitHub</a>
+                    <a href="https://yousef-3i5a.github.io/BakeryProject/" target="_blank"
+                        class="proj-link primary">Live Demo</a>
+                    <a href="https://github.com/Yousef-3i5a/BakeryProject" target="_blank"
+                        class="proj-link ghost">GitHub</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-num">04</div>
-                <h3>Weather Dashboard App</h3>
-                <p>A responsive weather dashboard consuming a public weather API. Displays real-time weather info,
-                    forecasts, and location-based data with a clean modern UI.</p>
+                <h3>Fokir Personal Portfolio</h3>
+                <p>A creative personal portfolio template with typing text effects, dynamic statistics counters, and a
+                    responsive grid layout to elegantly display services and previous work.</p>
                 <div class="project-tech">
-                    <span>JavaScript</span><span>REST API</span><span>HTML</span><span>CSS</span>
+                    <span>JavaScript</span><span>CSS Grid</span><span>HTML</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="proj-link primary">Live Demo</a>
-                    <a href="#" class="proj-link ghost">GitHub</a>
+                    <a href="https://yousef-3i5a.github.io/FokirProject/" target="_blank" class="proj-link primary">Live
+                        Demo</a>
+                    <a href="https://github.com/Yousef-3i5a/FokirProject" target="_blank"
+                        class="proj-link ghost">GitHub</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-num">05</div>
-                <h3>Interactive Quiz App</h3>
-                <p>A dynamic quiz application with multiple categories, score tracking, and a timer. Built with vanilla
-                    JavaScript — demonstrates DOM manipulation, event handling, and state management.</p>
+                <h3>Restaurant Menu Filter</h3>
+                <p>A dynamic web app that allows users to filter restaurant menu items by category (e.g., Breakfast,
+                    Lunch, Dinner). Built to demonstrate JavaScript array methods and dynamic DOM manipulation.</p>
                 <div class="project-tech">
-                    <span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>DOM API</span>
+                    <span>JavaScript</span><span>DOM API</span><span>CSS</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="proj-link primary">Live Demo</a>
-                    <a href="#" class="proj-link ghost">GitHub</a>
+                    <a href="https://yousef-3i5a.github.io/MenuProject/" target="_blank" class="proj-link primary">Live
+                        Demo</a>
+                    <a href="https://github.com/Yousef-3i5a/MenuProject" target="_blank"
+                        class="proj-link ghost">GitHub</a>
                 </div>
             </div>
 
@@ -966,16 +1009,27 @@
     <section id="contact">
         <div class="contact-inner">
             <div class="section-label">Let's Connect</div>
-            <h2 class="section-title">Have a project<br>in mind?</h2>
-            <p class="section-sub" style="margin:0 auto 0;">Whether you have an opportunity, want to collaborate, or
-                just want to say hi — my inbox is always open.</p>
-            <a href="mailto:eisayousef07@gmail.com" class="contact-email">
-                ✉️ eisayousef07@gmail.com
-            </a>
+            <h2 class="section-title">Send Me A Message</h2>
+            <p class="section-sub" style="margin:0 auto 0;">Have an opportunity or want to collaborate? Fill out the
+                form below and I'll get back to you.</p>
+
+            <!-- فورم التواصل -->
+            <!-- هتحتاج تحط الرابط بتاع Formspree هنا مكان YOUR_FORM_ID -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <input type="text" name="subject" placeholder="Subject">
+                <textarea name="message" placeholder="Your Message..." required></textarea>
+                <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+
             <div class="socials">
-                <a href="https://linkedin.com" class="social-btn">💼 LinkedIn</a>
-                <a href="https://github.com" class="social-btn">🐙 GitHub</a>
-                <a href="tel:+201094921997" class="social-btn">📞 +20 1094921997</a>
+                <a href="mailto:eisayousef07@gmail.com" class="social-btn">✉️ Email</a>
+                <a href="https://www.linkedin.com/in/yousef-eisa-50757b322/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BbTkYRgXERRy0NFCu8rbhvg%3D%3D"
+                    class="social-btn">💼 LinkedIn</a>
+                <a href="https://github.com/Yousef-3i5a" class="social-btn">🐙 GitHub</a>
             </div>
         </div>
     </section>
@@ -985,6 +1039,7 @@
     </footer>
 
     <script>
+        // سكريبت الـ Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
@@ -992,6 +1047,7 @@
             });
         });
 
+        // سكريبت الـ Animations
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; } });
         }, { threshold: 0.1 });
@@ -1001,6 +1057,25 @@
             el.style.transform = 'translateY(24px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.3s';
             obs.observe(el);
+        });
+
+        // ----- سكريبت قائمة الموبايل (Navbar Toggle) -----
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // فتح وقفل القائمة لما نضغط على زرار الـ Hamburger
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // قفل القائمة تلقائياً لما تختار أي لينك عشان ينزلك للسكشن المطلوب
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     </script>
 </body>
